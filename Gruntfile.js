@@ -1,3 +1,5 @@
+console.log('test');
+
 module.exports = function(grunt) {
 
     grunt.registerTask( 'default', [ 'clean', 'copy', 'hapi', 'watch'] );
