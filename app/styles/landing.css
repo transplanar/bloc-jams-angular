@@ -29,12 +29,6 @@ body.landing {
   position: relative;
 }
 
-.point {
-  position: relative;
-  padding: 2rem;
-  text-align: center;
-}
-
 .point .point-title {
   font-size: 1.25rem;
 }
@@ -50,11 +44,5 @@ body.landing {
   position: relative;
   padding: 2rem;
   text-align: center;
-  opacity: 0;
-  -webkit-transform: scaleX(0.6) translateY(3rem);
-  transform: scaleX(0.6) translateY(3rem);
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.75s ease-in-out;
-  -webkit-transition-delay: 0.2s;
-  transition-delay: 0.2s;
+  opacity: 1;
 }
