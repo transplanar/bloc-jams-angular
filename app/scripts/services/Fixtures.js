@@ -34,10 +34,20 @@
     
     Fixtures.getAlbum = function(){
       return albumPicasso;
+    };
+    
+    Fixtures.getCollection = function(count) {
+      var arr = [];
+      
+      while(count--) {
+        arr.push( Fixtures.getAlbum() );
+      }
+      
+      return arr;
     }
     
     return Fixtures;
-  }
+  };
   
   angular
     .module('blocJams')
