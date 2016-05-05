@@ -1,7 +1,15 @@
 (function(){
   function SongPlayer() {
+    /**
+     * @desc Object that will store the SongPlayer singleton
+     * @type {Object}
+   */
     var SongPlayer = {};
 
+    /**
+     * @desc Stores the last song that was selected by the user
+     * @type {Object}
+   */
     var currentSong = null;
     
     /**
@@ -28,14 +36,26 @@
       
       currentSong = song;
     };
+    
+    /**
+     * @function playSong
+     * @desc Plays the selected song and indicates the song is playing (via boolean)
+     * @param {Object} song
+   */
+    var playSong = function(song){
+      currentBuzzObject.play();
+      song.playing = true; 
+    }
 
-    //TODO missing resume play of current song
+    /**
+     * @function setSong
+     * @desc Manages behavior of the play button to toggle between pause and play states
+     * @param {Object} song
+   */
     SongPlayer.play = function(song) {
       if(currentSong !== song){
         setSong(song);  
-        currentBuzzObject.play();
-        
-        song.playing = true;
+        playSong(song);
         
       } else if (currentSong === song) {
         if (currentBuzzObject.isPaused()) {
@@ -52,6 +72,9 @@
     return SongPlayer;
   }
   
+  /**
+     * @desc initialize SongPlayer as an Angular Factory Service
+   */
   
   angular
     .module('blocJams')
