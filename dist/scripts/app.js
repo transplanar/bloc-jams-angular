@@ -27,5 +27,26 @@
   
   angular
     .module('blocJams', ['ui.router'])
-    .config(config);
+    .config(config)
+    .factory('Utils', function(){
+      return {
+        loopIndex: function(index, collection, forward){
+            var increment = forward ? 1 : -1;
+            var newIndex;
+
+            if( index >= (collection.length-1) && forward ){
+              newIndex = 0;
+            }else if (index <= 0 && !forward){
+              newIndex = collection.length-1;
+            }else {
+              newIndex = index + increment;
+            }
+
+          return newIndex;
+        }
+      }
+    })
+  .run(function($rootScope, Utils){
+    $rootScope.helpers = Utils;
+  })
 })();
