@@ -97,14 +97,20 @@
     };
     
     /**
-     * @function navigateAlbum
+     * @function navigatePlaylist
      * @desc Navigates to the next or previous song based on the value of forward
      * @param {Boolean} forward
    */
-    SongPlayer.navigateAlbum = function(forward){
+    SongPlayer.navigatePlaylist = function(direction){
+      if(direction == 'forward' || direction == 'backward'){
+        var forward = (direction == 'forward');
+      }else{
+        throw('Invalid input \"' + direction + '\" passed to navigatePlaylist');
+        return null;
+      }
+      
       var currentSongIndex = getSongIndex(SongPlayer.currentSong);
       
-//      currentSongIndex = loopIndex(currentSongIndex, currentAlbum.songs, forward);
       currentSongIndex = Utilities.loopIndex(currentSongIndex, currentAlbum.songs, forward);
       
       var song = currentAlbum.songs[currentSongIndex];
@@ -115,28 +121,11 @@
     return SongPlayer;
   }
   
-  //TODO move this to a global utility service
-//  var loopIndex = function(index, collection, forward){
-//    var increment = forward ? 1 : -1;
-//    var newIndex;
-//
-//    if( index >= (collection.length-1) && forward ){
-//      newIndex = 0;
-//    }else if (index <= 0 && !forward){
-//      newIndex = collection.length-1;
-//    }else {
-//      newIndex = index + increment;
-//    }
-//
-//    return newIndex;
-//  }
-  
   /**
      * @desc initialize SongPlayer as an Angular Factory Service
    */
   
   angular
     .module('blocJams')
-//    .factory('SongPlayer', ['Fixtures', SongPlayer]);
     .factory('SongPlayer', ['Fixtures', 'Utilities', SongPlayer]);
 })();
