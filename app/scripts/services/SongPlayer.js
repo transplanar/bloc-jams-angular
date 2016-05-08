@@ -32,8 +32,7 @@
    */
     var setSong = function(song){
       if (currentBuzzObject) {
-        currentBuzzObject.stop();
-        SongPlayer.currentSong.playing = false; //NOTE should this be null? Why?
+        SongPlayer.stopSong(SongPlayer.currentSong);        
       }
       
       currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -96,10 +95,16 @@
       song.playing = false;
     };
     
+    SongPlayer.stopSong = function(song){
+      currentBuzzObject.stop();
+      //NOTE review this
+      song.playing = false; //Should this be null? Why?
+    }
+    
     /**
      * @function navigatePlaylist
-     * @desc Navigates to the next or previous song based on the value of forward
-     * @param {Boolean} forward
+     * @desc Navigates to the next or previous song of current playlist/album
+     * @param {String} direction (only values of 'forward' or 'backward' are valid)
    */
     SongPlayer.navigatePlaylist = function(direction){
       if(direction == 'forward' || direction == 'backward'){
