@@ -102,15 +102,15 @@
     }
     
     /**
-     * @function navigatePlaylist
+     * @function navigateAlbum
      * @desc Navigates to the next or previous song of current playlist/album
      * @param {String} direction (only values of 'forward' or 'backward' are valid)
    */
-    SongPlayer.navigatePlaylist = function(direction){
+    SongPlayer.navigateAlbum = function(direction){
       if(direction == 'forward' || direction == 'backward'){
         var forward = (direction == 'forward');
       }else{
-        throw('Invalid input \"' + direction + '\" passed to navigatePlaylist');
+        throw('Invalid input \"' + direction + '\" passed to navigateAlbum');
         return null;
       }
       
