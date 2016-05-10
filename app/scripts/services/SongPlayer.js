@@ -107,8 +107,8 @@
      * @param {String} direction (only values of 'forward' or 'backward' are valid)
    */
     SongPlayer.navigateAlbum = function(direction){
-      if(direction == 'forward' || direction == 'backward'){
-        var forward = (direction == 'forward');
+      if(direction === 'forward' || direction === 'backward'){
+        var forward = (direction === 'forward');
       }else{
         throw('Invalid input \"' + direction + '\" passed to navigateAlbum');
         return null;
