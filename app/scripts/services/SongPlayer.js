@@ -21,6 +21,9 @@
     
     SongPlayer.currentTime = null;
     
+    SongPlayer.volume = 100;
+    
+    
     /**
      * @desc Buzz object audio file
      * @type {Object}
@@ -74,6 +77,12 @@
     SongPlayer.setCurrentTime = function(time){
       if(currentBuzzObject){
         currentBuzzObject.setTime(time);
+      }
+    };
+    
+    SongPlayer.setCurrentVolume = function(volume){
+      if(currentBuzzObject){
+        currentBuzzObject.setVolume(volume);
       }
     };
 
@@ -139,19 +148,6 @@
 
     return SongPlayer;
   }
-  
-  
-  
-//  SongPlayer.formatTime = function(time){
-//    var minutes = Math.floor(time / 60);
-//    var seconds  = Math.floor(time % 60);
-//    
-//    if(seconds < 10){
-//      seconds = '0' + seconds;
-//    }
-//    
-//    return minutes + ":" + seconds;
-//  };
   
   /**
      * @desc initialize SongPlayer as an Angular Factory Service
