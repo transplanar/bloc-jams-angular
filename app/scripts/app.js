@@ -26,7 +26,8 @@
   
   
   angular
-    .module('blocJams', ['ui.router'])
+//    .module('blocJams', ['ui.router'])
+    .module('blocJams', ['formatTime', 'ui.router'])
     .config(config)
     .factory('Utils', function(){
       return {

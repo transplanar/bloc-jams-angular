@@ -140,6 +140,19 @@
     return SongPlayer;
   }
   
+  
+  
+//  SongPlayer.formatTime = function(time){
+//    var minutes = Math.floor(time / 60);
+//    var seconds  = Math.floor(time % 60);
+//    
+//    if(seconds < 10){
+//      seconds = '0' + seconds;
+//    }
+//    
+//    return minutes + ":" + seconds;
+//  };
+  
   /**
      * @desc initialize SongPlayer as an Angular Factory Service
    */
