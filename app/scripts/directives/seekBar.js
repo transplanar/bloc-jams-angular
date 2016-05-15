@@ -23,7 +23,6 @@
         var seekBar = $(element);
         
         var percentString = function(){
-          //NOTE is this convention? Why write this way?
           var value = scope.value;
           var max = scope.max;
           
@@ -34,6 +33,10 @@
         scope.fillStyle = function(){
           return {width: percentString()} ;
         };
+        
+        scope.thumbStyle = function(){
+          return { left: percentString() };
+        }
         
         scope.onClickSeekBar = function(event){
           var percent = calculatePercent(seekBar, event);
