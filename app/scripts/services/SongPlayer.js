@@ -22,6 +22,9 @@
     SongPlayer.currentTime = null;
     
     SongPlayer.volume = 100;
+    var prevVolume = null;
+    
+    SongPlayer.audioIcon = 'icon ion-volume-high';
     
     
     /**
@@ -48,6 +51,11 @@
       currentBuzzObject.bind('timeupdate', function(){
         $rootScope.$apply(function(){
           SongPlayer.currentTime = currentBuzzObject.getTime();
+          var songDuration = SongPlayer.currentSong.duration;
+                    
+          if(SongPlayer.currentTime >= songDuration){
+            SongPlayer.navigateAlbum('forward');
+          }
         });
       });
       
@@ -83,6 +91,23 @@
     SongPlayer.setCurrentVolume = function(volume){
       if(currentBuzzObject){
         currentBuzzObject.setVolume(volume);
+      }
+    };
+    
+    SongPlayer.toggleMute = function(){
+      if(currentBuzzObject){
+        if(prevVolume){
+          SongPlayer.setCurrentVolume(prevVolume);
+          prevVolume = null;
+          SongPlayer.audioIcon = 'icon ion-volume-high';
+        }else{
+          prevVolume = SongPlayer.volume;
+          SongPlayer.setCurrentVolume(0);
+          SongPlayer.audioIcon = 'ion-volume-mute';
+        }
+        
+        //TODO
+        //set to ion-volume-mute
       }
     };
 

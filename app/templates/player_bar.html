@@ -25,12 +25,13 @@
       
       <div class="seek-control">
         <seek-bar value="{{playerBar.songPlayer.currentTime}}" max="{{playerBar.songPlayer.currentSong.duration}}" on-change='playerBar.songPlayer.setCurrentTime(value)'></seek-bar>
-        <div class="current-time">{{playerBar.songPlayer.currentTime | secondsToTime}}</div>
-        <div class="total-time">{{playerBar.songPlayer.currentSong.duration | secondsToTime}}</div>
+        <div class="current-time">{{playerBar.songPlayer.currentTime | secondsToTimer}}</div>
+        <div class="total-time">{{playerBar.songPlayer.currentSong.duration | secondsToTimer}}</div>
       </div>
     </div>
     <div class="control-group volume">
-      <span class="icon ion-volume-high"></span>
+<!--      <span class="icon ion-volume-high" ng-click='playerBar.songPlayer.toggleMute()'></span>-->
+      <span ng-class='playerBar.songPlayer.audioIcon' ng-click='playerBar.songPlayer.toggleMute()'></span>
       <seek-bar value="100" max="100" on-change='playerBar.songPlayer.setCurrentVolume(value)'></seek-bar>
     </div>
   </div>

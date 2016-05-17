@@ -1,5 +1,5 @@
 angular.module('formatTime',[])
-  .filter('secondsToTime', [function(){
+  .filter('secondsToTimer', [function(){
     return function(time){
       if( Number.isNaN(Number.parseFloat(time)) ){
         return '-:--';
